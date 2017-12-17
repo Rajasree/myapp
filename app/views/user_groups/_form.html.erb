@@ -1,0 +1,33 @@
+  <%= link_to 'Home', root_path %>
+  <% if @user_group.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user_group.errors.count, "error") %> prohibited this group from being saved:</h2>
+ 
+    <ul>
+    <% @user_group.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+  <%= form_for @user_group do |f| %>
+  <p>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+  </p>
+  <p>
+  <%= f.label :director_id %><br>
+  <%= f.collection_select(:director_id, User.where(role: 1), :id, :name) %>
+  </p>
+  <p>
+  <%= f.label :assistant_director_id %><br>
+  <%= f.collection_select(:assistant_director_id, User.where(role: 2), :id, :name)%>
+  </p>
+  <p>
+  <%= f.label :member_id %><br>
+  <%= f.collection_select(:member_id, User.where(role: 3), :id, :name) %>
+  </p> 
+  <p>
+  <%= f.submit %>
+  </p>
+  <% end %>

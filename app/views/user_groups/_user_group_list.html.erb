@@ -1,0 +1,44 @@
+<div class="content_cont_two content_cont_theree">    
+      <!-- <div >
+        <a href="#" >Back</a>
+      </div> -->      
+        <div>        
+          <span >List of All the Group and users.</span>
+        </div>
+</div>
+<div>
+  <div>
+    <%unless @user_groups.blank? %>
+      <div>
+        <ul>
+          <% @user_groups.each_with_index do |group, i| %>
+            <li id = "group_id_#{group.id}%>">
+              <div>
+                  <table>
+                    <tr>
+                      <td>Group Name:</td>
+                      <td><%= group.name %></td>
+                    </tr>
+                    <tr>
+                      <td>Director:</td>
+                      <td><%= get_user(group.director_id) %></td>
+                    </tr>
+                    <tr>
+                      <td>Assistant Director:</td>
+                      <td><%= get_user(group.assistant_director_id) %></td>
+                    </tr>
+                    <tr>
+                      <td>Member:</td>
+                      <td><%= get_user(group.member_id) %></td>
+                    </tr>
+                  </table>
+              </div>    
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <%end%>
+  </div>
+</div>
+</div>
+<div style="clear:both;"></div>
